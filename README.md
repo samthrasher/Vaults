@@ -15,8 +15,6 @@ Functionality of the game includes:
 
 - Click on rings to rotate, shift-click to rotate in opposite direction  
 - Advance to next level when puzzle is completed
-- Undo button
-
 Other features:  
 - Production readme
 
@@ -61,5 +59,6 @@ Finish anything that is left, fix any bugs, and add more levels to the game.
 
 
 ### Bonus features
-- Progress saved in a cookie
-- 
+
+- Save progress via cookies (or small server)
+- Undo button 
