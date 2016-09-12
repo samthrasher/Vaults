@@ -36,9 +36,9 @@ The Redux store will consist of two subparts, the `gameState` and the `displaySt
 The `gameState` contains `nodes` and `axes`. Each `node` represents a position
 which can be occupied by a marble, and has a colour and a position number,
 both of which are represented as integers. An `axis` represents a ring
-around which the marbles can travel. It has a position number, a set of children
-(which can be axes or nodes) and a set of linked axes. When the player
-triggers an axis, that axis and all of its linked axes rotate. The `displayState`
+around which the marbles can travel. It has a set of child nodes,
+ and a set of linked axes. When the player triggers an axis, that axis and
+ all of its linked axes rotate. The `displayState`
 contains extra information about the axes for the current level:
 their size, position, node colours, etc.
 
@@ -61,4 +61,4 @@ Finish anything that is left, fix any bugs, and add more levels to the game.
 ### Bonus features
 
 - Save progress via cookies (or small server)
-- Undo button 
+- Undo button
