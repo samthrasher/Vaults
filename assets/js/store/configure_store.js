@@ -1,5 +1,6 @@
-import {createStore} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducer from '../reducers/_root_reducer';
+import linkedAxisResolver from '../middleware/linked_axis_resolver';
 
 const defaultState = {
   gameState: {
@@ -10,5 +11,6 @@ const defaultState = {
 export const configureStore = (preloadedState = defaultState) =>
   createStore(
     rootReducer,
-    preloadedState
+    preloadedState,
+    applyMiddleware(linkedAxisResolver)
   );
