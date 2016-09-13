@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import PuzzleContainer from './puzzle_container';
 
 const Game = (props) => {
   return (
-    <div> React is large and in charge </div>
-  )
-}
+    <PuzzleContainer/>
+  );
+};
 
 export default Game;

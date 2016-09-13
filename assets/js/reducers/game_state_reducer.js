@@ -5,15 +5,14 @@ import {cycle} from '../utils/game_utils';
 const gameStateReducer = (state = {}, action) => {
   switch(action.type) {
     case CYCLE_AXIS: {
-      debugger;
       const axisToCycle = findByKey(state.axes, action.key);
-
       const newMarbles = cycle(state.marbles, state.axes[axisToCycle], action.direction);
-      const newAxes = state.axes.filter(axis => axis.key !== axisToCycle);
+      const newAxes = state.axes.filter(axis => axis.key !== action.key);
       newAxes.unshift(state.axes[axisToCycle]);
       return {
         axes: newAxes,
-        marbles: newMarbles
+        marbles: newMarbles,
+        goal: state.goal
       };
     }
     default:
