@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import PuzzleContainer from './puzzle_container';
+import PuzzleContainer from './puzzle/puzzle_container';
 
-const Game = (props) => {
+const Game = () => {
   return (
     <PuzzleContainer/>
   );

@@ -1,6 +1,6 @@
 import {CYCLE_AXIS} from '../actions/game_actions';
 import {findByKey} from '../selectors/selectors';
-import {cycle} from '../utils/game_utils';
+import {cycle, won} from '../utils/game_utils';
 
 const gameStateReducer = (state = {}, action) => {
   switch(action.type) {
@@ -12,7 +12,13 @@ const gameStateReducer = (state = {}, action) => {
       return {
         axes: newAxes,
         marbles: newMarbles,
-        goal: state.goal
+        goal: state.goal,
+        lastMove: {
+          key: action.key,
+          direction: action.direction
+        },
+        numMoves: state.numMoves + 1,
+        solved: won(newMarbles, state.goal)
       };
     }
     default:

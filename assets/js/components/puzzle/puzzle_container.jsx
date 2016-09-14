@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import Puzzle from './puzzle';
-import {triggerAxis} from '../actions/game_actions';
+import {triggerAxis} from '../../actions/game_actions';
 
 const mapStateToProps = ({gameState}) => ({
   axes: gameState.axes,
   marbles: gameState.marbles,
-  goal: gameState.goal
+  goal: gameState.goal,
+  lastMove: gameState.lastMove
 });
 
 const mapDispatchToProps = dispatch => ({

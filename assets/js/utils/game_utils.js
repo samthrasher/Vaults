@@ -33,3 +33,7 @@ export const cycle = (marbles, axis, dir = 1) => {
 
   return newMarbles;
 };
+
+export const won = (marbles, goal) => marbles.every(
+  (marble, i) => marble.color === goal[i]
+);

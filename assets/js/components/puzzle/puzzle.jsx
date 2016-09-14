@@ -4,7 +4,7 @@ import Marble from './marble';
 import GoalDot from './goal_dot';
 
 
-const Puzzle = ({axes, marbles, goal, triggerAxis}) => {
+const Puzzle = ({axes, marbles, goal, lastMove, triggerAxis}) => {
 
   const placedMarbles = {};
   const displayAxes = axes.map(axis => {
@@ -21,7 +21,9 @@ const Puzzle = ({axes, marbles, goal, triggerAxis}) => {
       displayOptions={axis.displayOptions}
       active={true}
       triggerAxis={(dir) => triggerAxis(axis.key, dir)}
-      key={axis.key}>
+      key={axis.key}
+      moved={parseInt(lastMove.key) === parseInt(axis.key) ? lastMove.direction : false}
+      >
       {displayMarbles}
     </Axis>;
   });
@@ -48,9 +50,9 @@ const Puzzle = ({axes, marbles, goal, triggerAxis}) => {
   //const goalDots = <div/>;
 
   return (
-    <div>
-      {displayAxes}
-      {goalDots}
+    <div className="puzzle">
+      {displayAxes.reverse()}
+      {goalDots.reverse()}
     </div>
   );
 };
