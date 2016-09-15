@@ -13,6 +13,7 @@ const gameStateReducer = (state = {}, action) => {
         axes: newAxes,
         marbles: newMarbles,
         goal: state.goal,
+        level: state.level,
         lastMove: {
           key: action.key,
           direction: action.direction
@@ -24,6 +25,7 @@ const gameStateReducer = (state = {}, action) => {
     default:
       return state;
   }
+
 };
 
 export default gameStateReducer;

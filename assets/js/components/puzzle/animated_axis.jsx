@@ -27,7 +27,7 @@ class AnimatedAxis extends React.Component {
       <div className="axis" ref={axis => {this._axis = axis;}} style={{
           animationName: animation,
           animationTimingFunction: "ease-in-out",
-          animationDuration: "0.6s"
+          animationDuration: "0.3s"
         }}>
         {this.props.children}
       </div>

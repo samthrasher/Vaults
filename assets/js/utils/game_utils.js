@@ -37,3 +37,12 @@ export const cycle = (marbles, axis, dir = 1) => {
 export const won = (marbles, goal) => marbles.every(
   (marble, i) => marble.color === goal[i]
 );
+
+export const scramble = (marbles, axes, numMoves) => {
+  let result = marbles;
+  for (let i = 0; i < numMoves; i++) {
+    const axisIndex = Math.floor(Math.random() * axes.length);
+    result = cycle(result, axes[axisIndex]);
+  }
+  return result;
+};
