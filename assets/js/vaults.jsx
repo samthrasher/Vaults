@@ -9,7 +9,6 @@ import {triggerAxis} from './actions/game_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore(Levels[1]);
-  window.store = store;
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store}/>, root);
 });

@@ -1,5 +1,7 @@
 ## Vaults
 
+[Play](https://samthrasher.github.io/Vaults)
+
 ### Background
 
 VAULTS is an original puzzle game based on combination puzzles like the
@@ -28,3 +30,10 @@ like the Rubik's Cube.
 Right now this game is probably very difficult for colorblind people to play.
 I'd like to add a colorblind mode which would use patterns instead of colors
 to indicate the marbles' goal positions.
+
+### Architecture and Technologies
+
+VAULTS is implemented using the following technologies:
+- Redux for organizing game/render logic
+- React.js for DOM manipulation and dynamic element styling
+- CSS3 animations
