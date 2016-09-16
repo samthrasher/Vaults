@@ -16,7 +16,7 @@ That's it!
 
 The puzzles range from relatively simple to devilishly tough:
 
-![]()
+![VAULTS screenshot](./assets/img/sshot.png)
 
 ### Next steps
 
