@@ -18,10 +18,10 @@ class Axis extends React.Component {
       }
     }
   }
-  
+
   render () {
     const {active, displayOptions, children, moved} = this.props;
-    const {x, y, radius, angle} = displayOptions;
+    const {x, y, z, radius, angle} = displayOptions;
     const marbleRadius = active ? 12.5 : 2.5;
     const axisRadius = radius - 30;
     const ringClass = active ? "ring" : "ring-goal";
@@ -32,7 +32,7 @@ class Axis extends React.Component {
           top: -marbleRadius,
           left: -marbleRadius,
           transform: "translate("+ (axisRadius) + "px, " + (axisRadius) + "px) rotate(" + (marbleAngle + angle) + "deg)"
-        }} key={marble.key}>
+        }} key={marble.key || "null" + i}>
         <div style={{
             transform: "translate(" + (radius - 15) + "px, 0)"
           }}
@@ -47,7 +47,8 @@ class Axis extends React.Component {
           transform: "translate("+x+"px, " +y+"px)",
           width: active ? 2*radius : 0,
           height: active ? 2*radius : 0,
-          borderRadius: radius
+          borderRadius: radius,
+          zIndex: z
         }}>
         <AnimatedAxis moved={moved} active={active}>
           {marbles}

@@ -6,7 +6,8 @@ const mapStateToProps = ({gameState}) => ({
   axes: gameState.axes,
   marbles: gameState.marbles,
   goal: gameState.goal,
-  lastMove: gameState.lastMove
+  lastMove: gameState.lastMove,
+  level: gameState.level
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,6 +1,7 @@
-import {CYCLE_AXIS} from '../actions/game_actions';
+import {CYCLE_AXIS, TRIGGER_AXIS, LOAD_LEVEL} from '../actions/game_actions';
 import {findByKey} from '../selectors/selectors';
 import {cycle, won} from '../utils/game_utils';
+import {Levels} from '../utils/levels';
 
 const gameStateReducer = (state = {}, action) => {
   switch(action.type) {
@@ -14,14 +15,31 @@ const gameStateReducer = (state = {}, action) => {
         marbles: newMarbles,
         goal: state.goal,
         level: state.level,
+        lastMove: state.lastMove,
+        numMoves: state.numMoves,
+        solved: won(newMarbles, state.goal)
+      };
+    }
+
+    case TRIGGER_AXIS: {
+      return {
+        axes: state.axes,
+        marbles: state.marbles,
+        goal: state.goal,
+        level: state.level,
         lastMove: {
           key: action.key,
           direction: action.direction
         },
         numMoves: state.numMoves + 1,
-        solved: won(newMarbles, state.goal)
+        solved: state.solved
       };
     }
+
+    case LOAD_LEVEL: {
+      return Levels[action.level].gameState;
+    }
+
     default:
       return state;
   }

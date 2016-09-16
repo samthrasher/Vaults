@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
+import {loadLevel} from '../../actions/game_actions';
 import ScoreContainer from './score';
 
 const mapStateToProps = state => ({
-  level: 1,
+  level: state.gameState.level,
   numMoves: state.gameState.numMoves,
   solved: state.gameState.solved
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  loadLevel: level => dispatch(loadLevel(level))
+});
 
 export default connect(
   mapStateToProps,

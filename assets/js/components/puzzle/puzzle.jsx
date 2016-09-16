@@ -3,26 +3,38 @@ import Axis from './axis';
 import Marble from './marble';
 import GoalDot from './goal_dot';
 
+import {findByKey} from '../../selectors/selectors';
 
-const Puzzle = ({axes, marbles, goal, lastMove, triggerAxis}) => {
+const Puzzle = ({axes, marbles, goal, lastMove, triggerAxis, level}) => {
+
+  if (level > 3) {
+    return <h1>
+      More levels to come!
+    </h1>;
+  }
 
   const placedMarbles = {};
+  const triggeredAxisIdx = findByKey(axes, parseInt(lastMove.key));
+  const movedAxisKeys = triggeredAxisIdx === -1 ? [] :
+    [parseInt(lastMove.key), ...(axes[triggeredAxisIdx].linkedAxes)];
+
   const displayAxes = axes.map(axis => {
     const displayMarbles = axis.marbleIndices.map(i => {
       if (placedMarbles[i])
-        return <div/>;
+        return <div key={"null" + i}/>;
       else {
         placedMarbles[i] = true;
         return <Marble color={marbles[i].color} key={marbles[i].key}/>;
       }
     });
 
+
     return <Axis
       displayOptions={axis.displayOptions}
       active={true}
       triggerAxis={(dir) => triggerAxis(axis.key, dir)}
       key={axis.key}
-      moved={parseInt(lastMove.key) === parseInt(axis.key) ? lastMove.direction : false}
+      moved={movedAxisKeys.includes(axis.key) ? lastMove.direction : false}
       >
       {displayMarbles}
     </Axis>;
@@ -32,7 +44,7 @@ const Puzzle = ({axes, marbles, goal, lastMove, triggerAxis}) => {
   const goalDots = axes.map(axis => {
     const dots = axis.marbleIndices.map(i => {
       if (placedDots[i])
-        return <div/>;
+        return <div key={"null" + i}/>;
       else {
         placedDots[i] = true;
         return <GoalDot color={goal[i]} key={i}/>;
