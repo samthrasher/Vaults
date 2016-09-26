@@ -60,7 +60,7 @@
 	
 	var _configure_store = __webpack_require__(209);
 	
-	var _levels = __webpack_require__(214);
+	var _levels = __webpack_require__(213);
 	
 	var _levels2 = _interopRequireDefault(_levels);
 	
@@ -23704,7 +23704,7 @@
 	
 	var _root_reducer2 = _interopRequireDefault(_root_reducer);
 	
-	var _linked_axis_resolver = __webpack_require__(213);
+	var _linked_axis_resolver = __webpack_require__(214);
 	
 	var _linked_axis_resolver2 = _interopRequireDefault(_linked_axis_resolver);
 	
@@ -23759,7 +23759,7 @@
 	
 	var _game_utils = __webpack_require__(212);
 	
-	var _levels = __webpack_require__(214);
+	var _levels = __webpack_require__(213);
 	
 	var gameStateReducer = function gameStateReducer() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
@@ -23896,45 +23896,6 @@
 
 /***/ },
 /* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _selectors = __webpack_require__(205);
-	
-	var _game_actions = __webpack_require__(206);
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	var linkedAxisResolver = function linkedAxisResolver(_ref) {
-	  var getState = _ref.getState;
-	  var dispatch = _ref.dispatch;
-	  return function (next) {
-	    return function (action) {
-	      if (action.type === _game_actions.TRIGGER_AXIS) {
-	        var axes = getState().gameState.axes;
-	        var triggeredAxis = axes[(0, _selectors.findByKey)(axes, action.key)];
-	        var linkedAxisKeys = [action.key].concat(_toConsumableArray(triggeredAxis.linkedAxes));
-	
-	        linkedAxisKeys.forEach(function (i) {
-	          dispatch((0, _game_actions.cycleAxis)(i, action.direction));
-	        });
-	        return next(action);
-	      } else {
-	        return next(action);
-	      }
-	    };
-	  };
-	};
-	
-	exports.default = linkedAxisResolver;
-
-/***/ },
-/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24104,6 +24065,45 @@
 	};
 	
 	exports.default = Levels;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _selectors = __webpack_require__(205);
+	
+	var _game_actions = __webpack_require__(206);
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	var linkedAxisResolver = function linkedAxisResolver(_ref) {
+	  var getState = _ref.getState;
+	  var dispatch = _ref.dispatch;
+	  return function (next) {
+	    return function (action) {
+	      if (action.type === _game_actions.TRIGGER_AXIS) {
+	        var axes = getState().gameState.axes;
+	        var triggeredAxis = axes[(0, _selectors.findByKey)(axes, action.key)];
+	        var linkedAxisKeys = [action.key].concat(_toConsumableArray(triggeredAxis.linkedAxes));
+	
+	        linkedAxisKeys.forEach(function (i) {
+	          dispatch((0, _game_actions.cycleAxis)(i, action.direction));
+	        });
+	        return next(action);
+	      } else {
+	        return next(action);
+	      }
+	    };
+	  };
+	};
+	
+	exports.default = linkedAxisResolver;
 
 /***/ }
 /******/ ]);
