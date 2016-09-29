@@ -38,6 +38,10 @@ h1 {
   letter-spacing: 10px;
   text-align: center;
 }
+h2 {
+  color: #fefafb;
+  text-align: center;
+}
 
 .puzzle {
   position: relative;
